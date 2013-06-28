@@ -60,7 +60,7 @@ def api_user_login(request):
         errors['email'] = 'Sorry! You need an e-mail address to login.'
     if is_blank(password):
         errors['password'] = 'Sorry! You need a password to login.'
-    if not (is_blank(email) and is_blank(password)):
+    if not (is_blank(email) or is_blank(password)):
         user = authenticate(username=email, password=password)
         if user is not None:
             if user.is_active:
