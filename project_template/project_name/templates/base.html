@@ -1,3 +1,5 @@
+{% load compress %}
+
 <!DOCTYPE html>
 
 <html lang="en">
@@ -27,6 +29,7 @@
   <script src="{{ STATIC_URL }}js/vendor/jquery.js"></script>
   <script src="{{ STATIC_URL }}js/vendor/bootstrap.js"></script>
   <script src="{{ STATIC_URL }}js/base.js"></script>
+  {% block js %}{% endblock %}
   {% endcompress %}
 
 </head>

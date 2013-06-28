@@ -38,6 +38,8 @@ activate_file = 'venv/bin/activate_this.py'
 execfile(activate_file, dict(__file__=activate_file))
 call(['pip', 'install', '-r', 'requirements.txt'])
 
+os.rename('lint.py', 'lint.sh')
+
 print 'Starting Up Server...'
 
 call(['python', 'manage.py', 'syncdb'])
