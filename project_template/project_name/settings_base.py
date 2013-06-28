@@ -46,6 +46,7 @@ STATICFILES_DIRS = (
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'compressor.finders.CompressorFinder',
 )
 
 # Make this unique, and don't share it with anybody.
@@ -80,6 +81,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.core.context_processors.csrf',
     'django.contrib.messages.context_processors.messages',
+    'core.context_processors.settings',
+)
+
+# For core.context_processors.settings
+TEMPLATE_VISIBLE_SETTINGS = (
+    'DEBUG',
+    'ENVIRONMENT',
 )
 
 TEMPLATE_DIRS = (
@@ -89,6 +97,8 @@ TEMPLATE_DIRS = (
 FIXTURE_DIRS = (
     os.path.join(PROJECT_ROOT, 'fixtures'),
 )
+
+COMMANDS_ROOT = os.path.join(PROJECT_ROOT, '../core/management/commands/')
 
 INSTALLED_APPS = (
     'django.contrib.auth',

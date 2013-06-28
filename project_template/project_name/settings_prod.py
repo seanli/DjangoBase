@@ -9,6 +9,8 @@ ALLOWED_HOSTS = [
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
+DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
+
 STATICFILES_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
 AWS_STORAGE_BUCKET_NAME = '{{ project_name }}'
