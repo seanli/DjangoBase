@@ -4,8 +4,16 @@ import sys
 import os
 from subprocess import call
 
-project_name = sys.argv[1]
-directory = sys.argv[2]
+try:
+    project_name = sys.argv[1]
+except IndexError:
+    print 'A project name is requried.'
+    sys.exit()
+try:
+    directory = sys.argv[2]
+except IndexError:
+    print 'Please specify a directory to install the project.'
+    sys.exit()
 
 print 'Initializing...'
 os.chdir('pip')
