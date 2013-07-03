@@ -48,7 +48,9 @@ call(['pip', 'install', '-r', 'requirements.txt'])
 
 os.rename('lint.py', 'lint.sh')
 
-print 'Starting Up Server...'
+print 'Setting Up Database...'
 
 call(['python', 'manage.py', 'syncdb'])
 call(['python', 'manage.py', 'migrate'])
+
+print 'Installation Completed.'
