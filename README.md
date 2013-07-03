@@ -29,3 +29,9 @@ The easiest way to start a Django web project.
 4. Run heroku config:add S3_BUCKET_NAME=project_name --app app_name
 5. Run heroku config:add AWS_ACCESS_KEY_ID=your_access_key_id --app app_name
 6. Run heroku config:add AWS_SECRET_ACCESS_KEY=your_secret_access_key --app app_name
+7. Run git push git@heroku.com:app_name.git master
+8. Run heroku run python manage.py syncdb --app app_name
+9. Run heroku run python manage.py migrate --app app_name
+10. Run heroku run python manage.py collectstatic --noinput --app app_name
+11. Run heroku run python manage.py createsuperuser --app app_name
+12. Your production site should now be running at app_name.herokuapp.com. Enjoy!
