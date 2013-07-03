@@ -21,11 +21,11 @@ The easiest way to start a Django web project.
 * Pylint and PEP8 code quality check
 * Production settings template with Boto, Amazon S3, and Django-Compressor
 
-### Heroku Production Setup:
+## Heroku Production Setup:
 
 1. Run heroku config:add PROJECT_NAME_ENV=PROD --app app_name
 2. Add AWS information in "config/settings_prod.py"
 3. Create an Amazon S3 bucket called "project_name"
 4. Run heroku config:add S3_BUCKET_NAME=project_name --app app_name
-5. Run heroku config:add AWS_ACCESS_KEY_ID=your_access_key_id
-6. Run heroku config:add AWS_SECRET_ACCESS_KEY=your_secret_access_key
+5. Run heroku config:add AWS_ACCESS_KEY_ID=your_access_key_id --app app_name
+6. Run heroku config:add AWS_SECRET_ACCESS_KEY=your_secret_access_key --app app_name
