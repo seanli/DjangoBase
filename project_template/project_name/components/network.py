@@ -1,5 +1,6 @@
 from django.utils import simplejson
 from django.http import HttpResponse
+from django.core.serializers.json import DjangoJSONEncoder
 
 
 def get_client_ip(request):
@@ -13,4 +14,4 @@ def get_client_ip(request):
 
 # Status Codes: http://en.wikipedia.org/wiki/List_of_HTTP_status_codes
 def build_response(response, mimetype='application/json', status=200):
-    return HttpResponse(simplejson.dumps(response), mimetype=mimetype, status=status)
+    return HttpResponse(simplejson.dumps(response, cls=DjangoJSONEncoder), mimetype=mimetype, status=status)
