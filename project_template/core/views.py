@@ -5,7 +5,7 @@ from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate, login
 from core.decorators import ajax_endpoint
 from core.models import User
-from core.utils.client import get_param, is_blank
+from core.utils.client import get_param, is_blank, is_valid_email
 from core.utils.auth import user_login
 
 
@@ -28,6 +28,8 @@ def api_user_add(request):
     errors = {}
     if is_blank(email):
         errors['email'] = 'Sorry! You need an e-mail address to sign up.'
+    elif not is_valid_email(email):
+        errors['email'] = 'Sorry! Please put a valid e-mail address.'
     if is_blank(password):
         errors['password'] = 'Sorry! You need a password to sign up.'
     if is_blank(password_conf):

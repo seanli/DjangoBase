@@ -1,3 +1,7 @@
+from django.core.validators import validate_email
+from django.core.exceptions import ValidationError
+
+
 def get_param(request, name, default=None, strip=True):
     input_data = default
     if name in request.POST:
@@ -11,3 +15,11 @@ def get_param(request, name, default=None, strip=True):
 
 def is_blank(param):
     return param is None or param == ''
+
+
+def is_valid_email(email):
+    try:
+        validate_email(email)
+        return True
+    except ValidationError:
+        return False
