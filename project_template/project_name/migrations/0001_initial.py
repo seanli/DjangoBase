@@ -18,13 +18,13 @@ class Migration(SchemaMigration):
             ('is_staff', self.gf('django.db.models.fields.BooleanField')(default=False)),
             ('is_active', self.gf('django.db.models.fields.BooleanField')(default=True)),
         ))
-        db.send_create_signal(u'core', ['User'])
+        db.send_create_signal(u'{{ project_name }}', ['User'])
 
         # Adding M2M table for field groups on 'User'
         m2m_table_name = db.shorten_name('table_user_groups')
         db.create_table(m2m_table_name, (
             ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('user', models.ForeignKey(orm[u'core.user'], null=False)),
+            ('user', models.ForeignKey(orm[u'{{ project_name }}.user'], null=False)),
             ('group', models.ForeignKey(orm[u'auth.group'], null=False))
         ))
         db.create_unique(m2m_table_name, ['user_id', 'group_id'])
@@ -33,7 +33,7 @@ class Migration(SchemaMigration):
         m2m_table_name = db.shorten_name('table_user_user_permissions')
         db.create_table(m2m_table_name, (
             ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
-            ('user', models.ForeignKey(orm[u'core.user'], null=False)),
+            ('user', models.ForeignKey(orm[u'{{ project_name }}.user'], null=False)),
             ('permission', models.ForeignKey(orm[u'auth.permission'], null=False))
         ))
         db.create_unique(m2m_table_name, ['user_id', 'permission_id'])
@@ -71,7 +71,7 @@ class Migration(SchemaMigration):
             'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
             'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
         },
-        u'core.user': {
+        u'{{ project_name }}.user': {
             'Meta': {'object_name': 'User', 'db_table': "'table_user'"},
             'email': ('django.db.models.fields.EmailField', [], {'unique': 'True', 'max_length': '200', 'db_index': 'True'}),
             'groups': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['auth.Group']", 'symmetrical': 'False', 'blank': 'True'}),
@@ -85,4 +85,4 @@ class Migration(SchemaMigration):
         }
     }
 
-    complete_apps = ['core']
+    complete_apps = ['{{ project_name }}']

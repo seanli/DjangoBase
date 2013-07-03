@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for i in {{ project_name }} core
+for i in {{ project_name }}
 do
     echo "Checking: $i"
     pylint --rcfile=pylint.rc $i

@@ -3,7 +3,7 @@ import os
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
-PROJECT_ROOT = os.path.abspath(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
 PROJECT_DIR = PROJECT_ROOT.split(os.sep)[-1]
 
 ADMINS = (
@@ -67,10 +67,10 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
 
-ROOT_URLCONF = '%s.urls' % PROJECT_DIR
+ROOT_URLCONF = '%s.routes' % PROJECT_DIR
 
 # Python dotted path to the WSGI application used by Django's runserver.
-WSGI_APPLICATION = '%s.wsgi.application' % PROJECT_DIR
+WSGI_APPLICATION = '%s.config.wsgi.application' % PROJECT_DIR
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
@@ -81,10 +81,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'django.core.context_processors.request',
     'django.core.context_processors.csrf',
     'django.contrib.messages.context_processors.messages',
-    'core.context_processors.settings',
+    '{{ project_name }}.components.context_processors.settings',
 )
 
-# For core.context_processors.settings
+# For components.context_processors.settings
 TEMPLATE_VISIBLE_SETTINGS = (
     'DEBUG',
     'ENVIRONMENT',
@@ -98,7 +98,7 @@ FIXTURE_DIRS = (
     os.path.join(PROJECT_ROOT, 'fixtures'),
 )
 
-COMMANDS_ROOT = os.path.join(PROJECT_ROOT, '../core/management/commands/')
+COMMANDS_ROOT = os.path.join(PROJECT_ROOT, 'management/commands')
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -107,9 +107,9 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.admin',
+    '{{ project_name }}',
     'compressor',
-    'south',
-    'core',
+    'south'
 )
 
 # A sample logging configuration. The only tangible logging
@@ -141,4 +141,4 @@ LOGGING = {
     }
 }
 
-AUTH_USER_MODEL = 'core.User'
+AUTH_USER_MODEL = '{{ project_name }}.User'

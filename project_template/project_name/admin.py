@@ -1,5 +1,5 @@
 from django.contrib import admin
-from core.models import User
+from models import User
 
 
 class UserAdmin(admin.ModelAdmin):

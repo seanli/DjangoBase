@@ -3,10 +3,10 @@ from django.http import HttpResponseRedirect
 from django.contrib import auth
 from django.shortcuts import render_to_response
 from django.contrib.auth import authenticate, login
-from core.decorators import ajax_endpoint
-from core.models import User
-from core.utils.client import get_param, is_blank, is_valid_email
-from core.utils.auth import user_login
+from components.decorators import ajax_endpoint
+from models import User
+from components.client import get_param, is_blank, is_valid_email
+from components.auth import user_login
 
 
 def index(request):
