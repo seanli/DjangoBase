@@ -23,7 +23,6 @@ The easiest way to start a Django web project.
 
 ### Heroku Production Setup:
 
-Configuration variable is 
 1. Run heroku config:add PROJECT_NAME_ENV=PROD --app app_name
 2. Add AWS information in "config/settings_prod.py"
 3. Create an Amazon S3 bucket called "project_name"
